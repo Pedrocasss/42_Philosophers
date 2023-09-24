@@ -1,0 +1,12 @@
+Quando executamos as duas threads, e buscarmos o seu processid, o seu valor sera igual uma a outra.
+Ja quando executamos os processes, e buscarmos o seu processid, o seu valor ira ser diferente.
+
+O motivo pelo qual isso acontece, e devido ao facto de as threads podem ser executadas no mesmo processo uma da outra.
+Enquanto os processos, temos o process child, e o parent, e os seus PIDS serao diferentes.
+
+Resumindo, um processo pode ter varias threads inseridas nele mesmo.
+Mas, uma thread nao pode ter processos inseridos nele.
+
+Um processo e um conjunto de uma ou mais threads.
+
+Threads partilham memoria com eles mesmos, por isso temos de ter cuidado.
