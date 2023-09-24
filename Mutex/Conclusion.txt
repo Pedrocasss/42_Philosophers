@@ -1,0 +1,36 @@
+Mutex ou mutual exclusion, basicamente vai fazer com que nos nao tenhamos threads a funcionar antes da outra thread acabar.
+Ou seja, vai nos ajudar a nao ter as race conditions.
+
+Para usarmos uma mutex, precisamos temos de a inicializar
+Como? Muito Simples, vamos ver este codigo e o que esta a ser feito.
+
+pthread_mutex_t   mutex;
+int to_see = 0;
+void    *routine()
+{
+    int i = 0;
+    while (i < 1000000)
+    {
+        pthread_mutex_lock(&mutex); // esta funcao basicamente vai fazer com que a thread que inicializamos no main com referencia a mutex, bloqueie a thread "anterior"
+        realize a sua tarefa, que no caso sera incrementar ate ao numero 1000000.
+        i++;
+        to_see++;
+        pthread_mutex_unlock(&mutex); //esta funcao vai "desbloquear" a proxima thread.
+    }
+}
+
+int main(void)
+{
+    pthread_t   t1, t2;
+
+    phtread_mutex_init(&mutex);
+    pthread_create(&t1, NULL, routine, NULL);
+    pthread_create(&t2, NULL, routine, NULL);
+    pthread_join(t1, NULL);
+    pthread_join(t2, NULL);
+    pthread_mutex_destroy(&mutex); // no final de tudo, destruimos a nossa mutex.
+    printf("Vamos ver o numero final do to_see: %d", to_see);
+}
+
+Ao realizar este codigo, com a nossa mutex, o valor esperado sera realizado com sucesso, pois agora a proxima thread so sera executada quando a anterior fizer tudo o que
+tem a fazer!
