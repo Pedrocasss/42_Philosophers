@@ -1,0 +1,1 @@
+Mutex ou mutual exclusion, basicamente vai fazer com que nos nao tenhamos threads a funcionar antes da outra thread acabar.
