@@ -47,3 +47,7 @@ int main(void)
     }
     printf("globalSum: %d\n", globalSum);
 }
+
+//Este codigo nada mais é do que uma demonstraçao do "poder" que as threads têm.
+//Neste exemplo fazemos com que a primeira thread some os 5 primeiros numeros e a segunda thread
+//os outros 5 numeros, sendo o resultado final 28+101 = 129!
