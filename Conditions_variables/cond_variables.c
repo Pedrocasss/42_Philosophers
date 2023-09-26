@@ -34,9 +34,9 @@ void    *car(void   *arg)
         printf("No fuel. Wait!\n");
         pthread_cond_wait(&cond, &mutex);
         // Equivalent to:
-        // pthread_mutex_unlock(&mutex);
-        // wait for signal on condFuel
         // pthread_mutex_lock(&mutex);
+        // wait for signal on condFuel
+        // pthread_mutex_unlock(&mutex);
     }
     fuel -= 40;
     printf("Got fuelled, now left!: %d\n", fuel);
